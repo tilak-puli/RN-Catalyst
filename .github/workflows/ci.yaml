@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+  workflow_call:
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Setup node and caching
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Vulnerability Checks
+        run: yarn npm audit --all --recursive
+
+      - name: ESLint
+        run: yarn lint
+
+      - name: Prettier
+        run: yarn prettier:check
+
+      - name: Tests
+        run: yarn test

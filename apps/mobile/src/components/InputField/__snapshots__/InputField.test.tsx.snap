@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] - [InputField]  should render text input correctly 1`] = `
+<View>
+  <TextInput
+    accessibilityLabel="Username"
+    placeholder="Username"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#fafafa",
+          "borderColor": "#eaeaea",
+          "borderRadius": 5,
+          "borderWidth": 1,
+          "fontSize": 14,
+          "height": 43,
+          "marginBottom": 5,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 5,
+          "paddingLeft": 10,
+        },
+      ]
+    }
+  />
+</View>
+`;

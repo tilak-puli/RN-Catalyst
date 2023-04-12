@@ -1,0 +1,4 @@
+export const SpinnerActionsType = {
+  SET_LOADING_TRUE: 'SET_LOADING_TRUE',
+  SET_LOADING_FALSE: 'SET_LOADING_FALSE',
+};

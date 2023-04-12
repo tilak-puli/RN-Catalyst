@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "lib": [
+      "es2017"
+    ],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "target": "esnext",
+    // "paths": { // Revisit after multiple packages setup
+    //   "@monorepo/*": [
+    //     "packages/*/index.ts",
+    //     "packages/*/index.tsx"
+    //   ]
+    // }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

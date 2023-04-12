@@ -1,0 +1,96 @@
+name: Release android beta
+
+on:
+  workflow_dispatch:
+    inputs:
+      flavor:
+        description: 'Select Flavor'
+        type: choice
+        options:
+          - production
+        required: true
+      version_name:
+        description: 'Release Version'
+        required: false
+      release_notes:
+        description: 'Release Notes'
+        required: false
+
+jobs:
+  static-checks:
+    uses: ./.github/workflows/ci.yaml
+
+  release-android:
+    runs-on: ubuntu-latest
+    needs: [static-checks]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup yarn and caching dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+
+      - name: Install all dependencies
+        run: yarn install --immutable
+
+      - name: Install ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          key: cache-${{ matrix.os }}-gradle
+          path: |
+            ~/.gradle/caches/
+            ~/.gradle/wrapper/
+
+      - name: Cache Gems
+        uses: actions/cache@v3
+        with:
+          path: |
+            vendor/bundle
+          key: cache-${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+
+      - name: Install Fastlane
+        run: |
+          cd apps/mobile/android
+          bundle config path vendor/bundle
+          bundle install
+          bundle update fastlane
+
+      - name: Setup secrets
+        run: |
+          echo ${{ secrets.APP_UPLOAD_SIGNING_KEYSTORE_B64 }} > upload_signing_keystore.keystore.b64
+          base64 -d -i upload_signing_keystore.keystore.b64 > apps/mobile/android/app/upload-key.keystore
+
+      - name: Release android beta apk to firebases
+        run: |
+          export APP_UPLOAD_KEY_PASSWORD=${{ secrets.APP_UPLOAD_KEY_PASSWORD }}
+          export APP_UPLOAD_STORE_PASSWORD=${{ secrets.APP_UPLOAD_STORE_PASSWORD }}
+          export APP_UPLOAD_KEY_ALIAS=${{ secrets.APP_UPLOAD_KEY_ALIAS }}
+          export APP_UPLOAD_SIGNING_KEYSTORE=upload-key.keystore
+          export FIREBASE_CREDENTIALS=firebase_credentials.json
+          export FIREBASE_CLI_TOKEN=${{ secrets.FIREBASE_CLI_TOKEN }}
+          export FIREBASE_APP_ID_ANDROID=${{ secrets.FIREBASE_APP_ID_ANDROID }}
+          export RELEASE_VERSION_CODE=${GITHUB_RUN_NUMBER}
+          export RELEASE_VERSION_NAME=${{ github.event.inputs.version_name }}
+          export RELEASE_NOTES=${{ github.event.inputs.release_notes }}
+          export SELECTED_FLAVOR=${{ github.event.inputs.flavor }}
+
+          cd apps/mobile/android
+          bundle exec fastlane distribute
+
+      - name: Upload mappings.txt, sourcemaps and apk
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            apps/mobile/android/app/build/outputs/apk/**/**/*.apk
+            apps/mobile/android/app/build/outputs/mapping/**/mapping.txt
+            apps/mobile/index.android.bundle.map
+            apps/mobile/android/app/build/generated/sourcemaps/react/**/**/index.android.bundle.map

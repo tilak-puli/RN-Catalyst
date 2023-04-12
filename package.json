@@ -1,0 +1,46 @@
+{
+  "name": "RN-Catalyst",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Regional-IT-India/catalyst-ui-reactnative-starter.git",
+  "author": "tilak <tilakpur@thoughtworks.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "postinstall": "husky install",
+    "lint": "yarn workspaces foreach run lint",
+    "lint:fix": "yarn workspaces foreach run lint:fix",
+    "lint:mobile": "yarn workspace mobile run lint",
+    "type-check": "yarn workspaces foreach run type-check",
+    "prettier:check": "yarn workspaces foreach run prettier:check",
+    "prettier:fix": "yarn workspaces foreach run prettier:fix",
+    "test": "yarn workspaces foreach run test"
+  },
+  "packageManager": "yarn@3.2.1",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.33.1",
+    "@typescript-eslint/parser": "5.33.1",
+    "commitizen": "4.2.4",
+    "cz-format-extension": "1.5.0",
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-react-native": "4.0.0",
+    "husky": "8.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-format-extension"
+    }
+  },
+  "resolutions": {
+    "ejs": "3.1.8",
+    "shell-quote": "1.7.3",
+    "react-native@0.69.3": "patch:react-native@npm:0.69.3#.yarn/patches/react-native-npm-0.69.3-e0ad4adbb8.patch"
+  }
+}

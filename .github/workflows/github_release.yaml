@@ -1,0 +1,27 @@
+# https://github.com/ncipollo/release-action
+
+# release a commit from local:
+# 1. create a tag `git tag v*.*.*`
+# 2. push the tag `git push origin v*.*.*`
+
+name: Code Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  static-checks:
+    uses: ./.github/workflows/ci.yaml
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [static-checks]
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

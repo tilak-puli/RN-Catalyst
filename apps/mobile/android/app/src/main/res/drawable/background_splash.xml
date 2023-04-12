@@ -1,0 +1,9 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color -->
+    <item android:drawable="@color/white"/>
+
+    <!-- Logo at the center of the screen -->
+    <item
+        android:drawable="@drawable/launch_screen"
+        android:gravity="center"/>
+</layer-list>

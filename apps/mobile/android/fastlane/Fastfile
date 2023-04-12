@@ -1,0 +1,21 @@
+default_platform(:android)
+
+platform :android do
+
+    desc "Lane for distributing app using Firebase App Distributions"
+    lane :distribute do
+        gradle(
+            task: "assemble",
+            flavor: ENV['SELECTED_FLAVOR'],
+            build_type: "release",
+            properties: { 'versionCode' => ENV['RELEASE_VERSION_CODE'] , 'versionName' => ENV['RELEASE_VERSION_NAME']}
+        )
+
+        firebase_app_distribution(
+            firebase_cli_token:ENV['FIREBASE_CLI_TOKEN'],
+            app: ENV['FIREBASE_APP_ID_ANDROID'],
+            release_notes: ENV['RELEASE_NOTES'],
+            groups: "development-team"
+        )
+    end
+end

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component] - [Selector-Android] should render selector component correctly for android 1`] = `
+<RNCAndroidDialogPicker
+  items={
+    Array [
+      Object {
+        "color": null,
+        "enabled": true,
+        "label": "Option 1",
+        "style": Object {
+          "backgroundColor": null,
+          "color": null,
+        },
+      },
+      Object {
+        "color": null,
+        "enabled": true,
+        "label": "Option 2",
+        "style": Object {
+          "backgroundColor": null,
+          "color": null,
+        },
+      },
+    ]
+  }
+  onSelect={[Function]}
+  selected={0}
+  style={
+    Array [
+      undefined,
+    ]
+  }
+/>
+`;
