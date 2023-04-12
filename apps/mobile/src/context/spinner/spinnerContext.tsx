@@ -23,7 +23,6 @@ export const SpinnerProvider = ({children}: PropsWithChildren) => {
     loading: false,
     count: 0,
   });
-
   const setLoadingTrue = useCallback(() => {
     dispatch({type: SpinnerActionsType.SET_LOADING_TRUE});
   }, []);

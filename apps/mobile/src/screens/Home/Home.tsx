@@ -1,11 +1,12 @@
 import {Suspense} from 'react';
 import {Text} from 'react-native';
 import {useQuery} from 'react-query';
+import {useAtom} from 'jotai';
 import {AuthActions} from '../../api';
 import Button from '../../components/Button/Button';
 import Spinner from '../../components/Spinner';
-import {useAuthContext} from '../../context/auth/authContext';
 import {Container, StyledText} from './Home.style';
+import {authAtom} from '../../state/machines/Auth';
 
 export type Props = {
   baseEnthusiasmLevel: number;
@@ -21,7 +22,8 @@ const User = () => {
 };
 
 const Home = () => {
-  const {logOut} = useAuthContext();
+  // eslint-disable-next-line
+  const [_, sendToAuthState] = useAtom(authAtom);
 
   return (
     <Container>
@@ -29,7 +31,11 @@ const Home = () => {
       <Suspense fallback={<Spinner />}>
         <User />
       </Suspense>
-      <Button testID="home-logout-btn" title="Log out" onPress={logOut} />
+      <Button
+        testID="home-logout-btn"
+        title="Log out"
+        onPress={() => sendToAuthState({type: 'LOGOUT'})}
+      />
     </Container>
   );
 };

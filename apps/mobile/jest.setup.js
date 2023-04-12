@@ -16,7 +16,7 @@ global.AbortController = jest.fn().mockImplementation(() => ({
 }));
 
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
-
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 jest.mock('react-native-keychain', () => {
   let data = {};
   return {

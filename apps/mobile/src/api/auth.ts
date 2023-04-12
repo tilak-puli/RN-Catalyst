@@ -2,7 +2,7 @@ import {AxiosResponse} from 'axios';
 import axiosInstance from '../network';
 import axiosInstanceWithAbort from '../network/abortAxios';
 
-type LoginInput = {
+export type LoginInput = {
   username: string;
   password: string;
 };

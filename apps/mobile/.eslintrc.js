@@ -14,6 +14,7 @@ module.exports = {
     'jest.setup.js',
     'commitlint.config.js',
     'coverage',
+    '**/*.typegen.ts',
   ],
 
   overrides: [

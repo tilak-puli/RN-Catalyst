@@ -73,6 +73,9 @@ function userService() {
       ],
       responses: [
         {
+          behaviors: [{
+            "wait": 5000
+          }],
           is: {
             statusCode: 200,
             headers: {

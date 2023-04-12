@@ -1,24 +1,38 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {useAtom} from 'jotai';
 import Button from '../../components/Button/Button';
 import InputField from '../../components/InputField/InputField';
 import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
-import {useAuthContext} from '../../context/auth/authContext';
 import {
   Container,
   StyledLogoText,
   StyledSafeAreaContainer,
 } from './Login.style';
+import {authAtom} from '../../state/machines/Auth';
+import {useSpinnerContext} from '../../context/spinner/spinnerContext';
 
 const Login = () => {
-  const {logIn} = useAuthContext();
   const {t} = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [authState, sendToAuthState] = useAtom(authAtom);
+  const isLogging = authState.matches('login.progress');
+  const {setLoadingFalse, setLoadingTrue} = useSpinnerContext();
 
   const handleLogin = async () => {
-    await logIn?.({username, password});
+    sendToAuthState({type: 'LOGIN', data: {username, password}});
   };
+
+  useEffect(() => {
+    if (isLogging) {
+      setLoadingTrue();
+    } else {
+      setLoadingFalse();
+    }
+
+    return setLoadingFalse;
+  }, [setLoadingTrue, setLoadingFalse, isLogging]);
 
   return (
     <StyledSafeAreaContainer>
