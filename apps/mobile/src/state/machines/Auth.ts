@@ -1,5 +1,4 @@
 import {assign, createMachine} from 'xstate';
-import {atomWithMachine} from 'jotai-xstate';
 import {AuthActions} from '../../api';
 import {secureKeyValueStore} from '../../storage';
 import {LoginInput} from '../../api/auth';
@@ -88,5 +87,3 @@ export const authMachine = createMachine(
     },
   },
 );
-
-export const authAtom = atomWithMachine(authMachine);

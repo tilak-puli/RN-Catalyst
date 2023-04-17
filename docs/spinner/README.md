@@ -9,7 +9,7 @@
 
 In React 18 Suspense comes with data fetching support. In our starter kit we are using Spinner with two different modes. One is **Full Screen Mode** and second is **View Mode**.
 
-**Full Screen Mode** uses `Modal` for showing loader/spinner and it covers the whole screen. The root level `Suspense` is using this spinner as a fallback or we can trigger it using `SpinnerContext` as well.
+**Full Screen Mode** uses `Modal` for showing loader/spinner and it covers the whole screen. The root level `Suspense` is using this spinner as a fallback or we can trigger it using `GlobalContext` as well.
 
 **View Mode** uses `View` for showing loader and it's only limited to its parent View, it will not cover the entire screen. All sub level `Suspense` can use this loader as a fallback for suspended UI part
 

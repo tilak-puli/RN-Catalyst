@@ -4,6 +4,7 @@ import {SpinnerProvider, useSpinnerContext} from './spinnerContext';
 
 const SampleLoaderContext = () => {
   const {setLoadingFalse, setLoadingTrue} = useSpinnerContext();
+
   return (
     <>
       <Pressable testID="jest-loading-true-btn" onPress={setLoadingTrue}>

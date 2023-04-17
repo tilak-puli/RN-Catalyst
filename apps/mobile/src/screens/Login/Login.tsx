@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {useAtom} from 'jotai';
 import Button from '../../components/Button/Button';
 import InputField from '../../components/InputField/InputField';
 import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
@@ -9,19 +8,27 @@ import {
   StyledLogoText,
   StyledSafeAreaContainer,
 } from './Login.style';
-import {authAtom} from '../../state/machines/Auth';
-import {useSpinnerContext} from '../../context/spinner/spinnerContext';
+import {LoginInput} from '../../api/auth';
 
-const Login = () => {
+type LoginProps = {
+  isLogging: boolean;
+  setLoadingFalse: () => void;
+  setLoadingTrue: () => void;
+  login: (data: LoginInput) => void;
+};
+
+const Login = ({
+  isLogging,
+  setLoadingFalse,
+  setLoadingTrue,
+  login,
+}: LoginProps) => {
   const {t} = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [authState, sendToAuthState] = useAtom(authAtom);
-  const isLogging = authState.matches('login.progress');
-  const {setLoadingFalse, setLoadingTrue} = useSpinnerContext();
 
   const handleLogin = async () => {
-    sendToAuthState({type: 'LOGIN', data: {username, password}});
+    login({username, password});
   };
 
   useEffect(() => {

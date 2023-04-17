@@ -6,27 +6,26 @@ import './src/i18n';
 import ErrorBoundary from './src/components/ErrorHandler/ErrorHandler';
 import {SpinnerProvider} from './src/context/spinner/spinnerContext';
 import Spinner from './src/components/Spinner';
-// eslint-disable-next-line import/order
-import {useAtom} from 'jotai';
-import {authAtom} from './src/state/machines/Auth';
+import {GlobalContextProvider} from './src/context/global/globalContext';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [authState] = useAtom(authAtom);
-
   useEffect(() => {
     SplashScreen.hide();
   }, []);
+
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <SpinnerProvider>
-          {/* Revisit after migrating to react 18 */}
-          <Suspense fallback={<Spinner fullScreeMode />}>
-            <RootNavigation loggedIn={authState.matches('login.success')} />
-          </Suspense>
-        </SpinnerProvider>
+        <GlobalContextProvider>
+          <SpinnerProvider>
+            {/* Revisit after migrating to react 18 */}
+            <Suspense fallback={<Spinner fullScreeMode />}>
+              <RootNavigation />
+            </Suspense>
+          </SpinnerProvider>
+        </GlobalContextProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   );

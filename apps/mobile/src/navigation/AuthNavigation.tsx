@@ -1,12 +1,12 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import Login from '../screens/Login/Login';
+import LoginContainer from '../screens/Login/LoginContainer';
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigation = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Login" component={Login} />
+    <Stack.Screen name="Login" component={LoginContainer} />
   </Stack.Navigator>
 );
 

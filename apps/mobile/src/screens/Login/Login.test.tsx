@@ -1,16 +1,22 @@
+import {renderHook} from '@testing-library/react-hooks';
+import {useInterpret} from '@xstate/react';
 import {fireEvent, render, screen} from '../../utilities/test-util';
-import Login from './Login';
+import LoginContainer from './LoginContainer';
+import {GlobalContext} from '../../context/global/globalContext';
+import {authMachine} from '../../state/machines/Auth';
 
 describe('[Screens] - [login]', () => {
   const userNameInputTestId = 'login-username';
   const passwordInputTestId = 'login-password';
+  const loginButtonTestId = 'login-btn';
+
   test('should render the login screen', () => {
-    const {container} = render(<Login />);
+    const {container} = render(<LoginContainer />);
     expect(container).toBeTruthy();
   });
 
   test('should check if username and password fields are present', () => {
-    render(<Login />);
+    render(<LoginContainer />);
 
     expect(screen.getByTestId(userNameInputTestId)).toBeTruthy();
     expect(screen.getByTestId(passwordInputTestId)).toBeTruthy();
@@ -18,7 +24,7 @@ describe('[Screens] - [login]', () => {
 
   test('should accept username input values', () => {
     const userInputChangedText = 'some user';
-    render(<Login />);
+    render(<LoginContainer />);
 
     const usernameInput = screen.getByTestId(userNameInputTestId);
 
@@ -28,7 +34,7 @@ describe('[Screens] - [login]', () => {
   });
   test('should accept password input values', () => {
     const passwordInputChangedText = 'some password';
-    render(<Login />);
+    render(<LoginContainer />);
     const passwordInput = screen.getByTestId(passwordInputTestId);
 
     fireEvent.changeText(passwordInput, passwordInputChangedText);
@@ -37,10 +43,37 @@ describe('[Screens] - [login]', () => {
   });
 
   test('should check if the login button is present', () => {
-    const loginButtonTestId = 'login-btn';
-    render(<Login />);
+    render(<LoginContainer />);
     const loginButton = screen.getByTestId(loginButtonTestId);
 
     expect(loginButton).toBeTruthy();
+  });
+
+  test('should check if the clicking login button calls login', () => {
+    const username = 'login-user';
+    const password = 'login-password';
+    const authService = renderHook(() => useInterpret(authMachine)).result
+      .current;
+    authService.send = jest.fn();
+
+    render(
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
+      <GlobalContext.Provider value={{authService}}>
+        <LoginContainer />
+      </GlobalContext.Provider>,
+    );
+
+    const loginButton = screen.getByTestId(loginButtonTestId);
+
+    const usernameInput = screen.getByTestId(userNameInputTestId);
+    const passwordInput = screen.getByTestId(passwordInputTestId);
+    fireEvent.changeText(usernameInput, username);
+    fireEvent.changeText(passwordInput, password);
+    fireEvent.press(loginButton);
+
+    expect(authService.send).toBeCalledWith({
+      type: 'LOGIN',
+      data: {username, password},
+    });
   });
 });
