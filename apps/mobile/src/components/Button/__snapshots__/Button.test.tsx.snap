@@ -10,6 +10,23 @@ exports[`[Component] - [Button] should render button component correctly 1`] = `
 >
   <View
     accessibilityRole="button"
+    accessibilityState={
+      Object {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={true}
     focusable={true}
     nativeBackgroundAndroid={
