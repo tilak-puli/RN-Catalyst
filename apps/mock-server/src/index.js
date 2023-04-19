@@ -11,5 +11,6 @@ const mbServerInstance = mb.create({
 });
 
 mbServerInstance.then(() => {
+  console.log(`Mock Server started at: localhost:${settings.port}`)
   userService();
 });

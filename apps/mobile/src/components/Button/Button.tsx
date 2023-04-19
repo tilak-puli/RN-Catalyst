@@ -1,11 +1,10 @@
+import {View, ViewStyle} from 'react-native';
 import {
-  Button as RNButton,
-  ButtonProps as RNButtonProps,
-  View,
-  ViewStyle,
-} from 'react-native';
+  Button as RNEButton,
+  ButtonProps as RNEButtonProps,
+} from '@rneui/themed';
 
-interface ButtonProps extends RNButtonProps {
+interface ButtonProps extends RNEButtonProps {
   style?: ViewStyle;
 }
 
@@ -13,7 +12,7 @@ const Button = ({style = {}, testID, ...rest}: ButtonProps) => {
   const mergedStyles = [style];
   return (
     <View testID={testID} style={mergedStyles}>
-      <RNButton
+      <RNEButton
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />

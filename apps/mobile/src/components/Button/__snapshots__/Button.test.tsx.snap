@@ -9,64 +9,83 @@ exports[`[Component] - [Button] should render button component correctly 1`] = `
   }
 >
   <View
-    accessibilityRole="button"
-    accessibilityState={
-      Object {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      Object {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    nativeBackgroundAndroid={
-      Object {
-        "attribute": "selectableItemBackground",
-        "rippleRadius": undefined,
-        "type": "ThemeAttrAndroid",
-      }
-    }
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
-          "backgroundColor": "#2196F3",
-          "borderRadius": 2,
-          "elevation": 4,
+          "overflow": "hidden",
         },
+        Object {
+          "borderRadius": 2,
+        },
+        undefined,
+        false,
       ]
     }
+    testID="RNE_BUTTON_WRAPPER"
   >
-    <Text
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "busy": false,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        Object {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      focusable={true}
+      nativeBackgroundAndroid={
+        Object {
+          "attribute": "selectableItemBackground",
+          "rippleRadius": undefined,
+          "type": "ThemeAttrAndroid",
+        }
+      }
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "color": "white",
-            "fontWeight": "500",
-            "margin": 8,
-            "textAlign": "center",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#2089dc",
+          "borderColor": "#2089dc",
+          "borderRadius": 2,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "padding": 8,
+          "paddingHorizontal": 10,
+        }
       }
     >
-      PRESS ME
-    </Text>
+      <Text
+        style={
+          Object {
+            "color": "white",
+            "fontFamily": "sans-serif-medium",
+            "fontSize": 16,
+            "paddingVertical": 1,
+            "textAlign": "center",
+          }
+        }
+      >
+        Press me
+      </Text>
+    </View>
   </View>
 </View>
 `;

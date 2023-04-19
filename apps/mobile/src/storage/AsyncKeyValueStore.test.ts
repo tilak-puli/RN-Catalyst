@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+// @ts-ignore
 import {getItem} from '@react-native-async-storage/async-storage';
 import {asyncKeyValueStore} from '.';
 

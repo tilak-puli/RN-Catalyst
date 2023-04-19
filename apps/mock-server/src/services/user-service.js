@@ -74,7 +74,7 @@ function userService() {
       responses: [
         {
           behaviors: [{
-            "wait": 5000
+            "wait": 2000
           }],
           is: {
             statusCode: 200,
