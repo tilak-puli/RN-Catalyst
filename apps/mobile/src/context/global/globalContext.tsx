@@ -10,7 +10,7 @@ type GlobalState = {
 export const GlobalContext = createContext({} as GlobalState);
 
 export const GlobalContextProvider = ({children}: PropsWithChildren) => {
-  const authService = useInterpret(authMachine);
+  const authService = useInterpret(authMachine, {devTools: __DEV__});
 
   return (
     // eslint-disable-next-line
