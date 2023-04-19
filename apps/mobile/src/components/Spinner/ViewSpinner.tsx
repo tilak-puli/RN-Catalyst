@@ -1,8 +1,12 @@
-import {ActivityIndicator} from 'react-native';
-import {StyledView} from './ViewSpinner.style';
+import {ActivityIndicator, View} from 'react-native';
+import useStyles from './ViewSpinner.style';
 
-export const ViewLoader = () => (
-  <StyledView testID="global-suspense-loader">
-    <ActivityIndicator color="black" size="large" />
-  </StyledView>
-);
+export const ViewLoader = () => {
+  const styles = useStyles();
+
+  return (
+    <View style={styles.view} testID="global-suspense-loader">
+      <ActivityIndicator color="black" size="large" />
+    </View>
+  );
+};

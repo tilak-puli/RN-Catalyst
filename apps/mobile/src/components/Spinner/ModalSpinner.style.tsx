@@ -1,9 +1,13 @@
-import {View} from 'react-native';
-import styled from 'styled-components/native';
+import {makeStyles} from '@rneui/themed';
 
-export const StyledView = styled(View)`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
-`;
+const useStyles = makeStyles(theme => ({
+  view: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    backgroundColor: theme.colors.transparentBlack,
+  },
+}));
+
+export default useStyles;

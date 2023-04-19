@@ -23,14 +23,14 @@ const App = () => {
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
           <GlobalContextProvider>
-            <SpinnerProvider>
-              <ThemeProvider theme={theme}>
+            <ThemeProvider theme={theme}>
+              <SpinnerProvider>
                 {/* Revisit after migrating to react 18 */}
                 <Suspense fallback={<Spinner fullScreeMode />}>
                   <RootNavigation />
                 </Suspense>
-              </ThemeProvider>
-            </SpinnerProvider>
+              </SpinnerProvider>
+            </ThemeProvider>
           </GlobalContextProvider>
         </QueryClientProvider>
       </ErrorBoundary>

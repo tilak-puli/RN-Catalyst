@@ -61,8 +61,8 @@ exports[`[Component] - [Button] should render button component correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#2089dc",
-          "borderColor": "#2089dc",
+          "backgroundColor": "blue",
+          "borderColor": "#F2811D",
           "borderRadius": 2,
           "borderWidth": 0,
           "flexDirection": "row",

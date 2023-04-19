@@ -8,18 +8,16 @@ exports[`[Component] - [InputField]  should render text input correctly 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#fafafa",
+          "backgroundColor": "#FAFAFA",
           "borderColor": "#eaeaea",
           "borderRadius": 5,
           "borderWidth": 1,
           "fontSize": 14,
           "height": 43,
-          "marginBottom": 5,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 5,
+          "marginVertical": 5,
           "paddingLeft": 10,
         },
+        undefined,
       ]
     }
   />

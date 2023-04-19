@@ -1,7 +1,10 @@
-import {View} from 'react-native';
-import styled from 'styled-components/native';
+import {makeStyles} from '@rneui/themed';
 
-export const StyledView = styled(View)`
-  justify-content: center;
-  align-items: center;
-`;
+const useStyles = makeStyles(() => ({
+  view: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
+
+export default useStyles;

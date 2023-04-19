@@ -1,20 +1,20 @@
-import {Text, TouchableOpacity} from 'react-native';
-import styled from 'styled-components/native';
+import {makeStyles} from '@rneui/themed';
 
-export const Container = styled(TouchableOpacity)`
-  /* flex: 1, */
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #fff;
-  border-color: #eaeaea;
-  border-radius: 5px;
-  border-width: 1px;
-  height: 43px;
-  margin: 10px 0px;
-  padding: 0 10px;
-`;
+const useStyles = makeStyles(theme => ({
+  container: {
+    height: 43,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: theme.colors.white1,
+    backgroundColor: theme.colors.white,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    marginVertical: 10,
+  },
+  text: {
+    fontSize: 14,
+  },
+}));
 
-export const StylediosText = styled(Text)`
-  font-size: 14px;
-  /* text-align:center ; */
-`;
+export default useStyles;

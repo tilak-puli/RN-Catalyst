@@ -1,7 +1,7 @@
 import {PickerProps} from '@react-native-picker/picker';
-import {useMemo} from 'react';
-import {ActionSheetIOS} from 'react-native';
-import {Container, StylediosText} from './Selector.style';
+import React, {useMemo} from 'react';
+import {ActionSheetIOS, Text, TouchableOpacity} from 'react-native';
+import useStyles from './Selector.style';
 
 type Option = {
   label: string;
@@ -19,6 +19,7 @@ const Selector = ({
   onValueChange,
   testID,
 }: SelectorProps) => {
+  const styles = useStyles();
   const onPress = () =>
     ActionSheetIOS.showActionSheetWithOptions(
       {
@@ -40,11 +41,14 @@ const Selector = ({
   }, [selectedValue, options]);
 
   return (
-    <Container onPress={onPress} testID={testID}>
-      <StylediosText testID="selector-selected-value">
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onPress}
+      testID={testID}>
+      <Text style={styles.text} testID="selector-selected-value">
         {selectedLabel}
-      </StylediosText>
-    </Container>
+      </Text>
+    </TouchableOpacity>
   );
 };
 

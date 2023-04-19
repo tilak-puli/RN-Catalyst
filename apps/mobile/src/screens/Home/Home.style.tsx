@@ -1,14 +1,16 @@
-import styled from 'styled-components/native';
-import {Text, View} from 'react-native';
+import {makeStyles} from '@rneui/themed';
 
-export const Container = styled(View)`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
+const useStyles = makeStyles(() => ({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 16,
+  },
+}));
 
-export const StyledText = styled(Text)`
-  font-size: 20px;
-  font-weight: bold;
-  margin: 16px;
-`;
+export default useStyles;

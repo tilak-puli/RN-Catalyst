@@ -32,31 +32,23 @@ exports[`[Component] - [Selector - iOS] should render selector component for ios
   style={
     Object {
       "alignItems": "flex-start",
-      "backgroundColor": "#fff",
+      "backgroundColor": "#ffffff",
       "borderColor": "#eaeaea",
       "borderRadius": 5,
       "borderWidth": 1,
       "height": 43,
       "justifyContent": "center",
-      "marginBottom": 10,
-      "marginLeft": 0,
-      "marginRight": 0,
-      "marginTop": 10,
+      "marginVertical": 10,
       "opacity": 1,
-      "paddingBottom": 0,
-      "paddingLeft": 10,
-      "paddingRight": 10,
-      "paddingTop": 0,
+      "paddingHorizontal": 10,
     }
   }
 >
   <Text
     style={
-      Array [
-        Object {
-          "fontSize": 14,
-        },
-      ]
+      Object {
+        "fontSize": 14,
+      }
     }
     testID="selector-selected-value"
   />

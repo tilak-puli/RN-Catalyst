@@ -1,21 +1,22 @@
-import styled from 'styled-components/native';
-import {Text, View, SafeAreaView} from 'react-native';
+import {makeStyles} from '@rneui/themed';
 
-export const StyledSafeAreaContainer = styled(SafeAreaView)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
+const useStyles = makeStyles(theme => ({
+  safeAreContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: theme.colors.white,
+  },
+  container: {
+    flex: 1,
+  },
+  logoText: {
+    fontSize: 30,
+    fontWeight: '800',
+    marginTop: 150,
+    marginBottom: 30,
+    textAlign: 'center',
+  },
+}));
 
-export const Container = styled(View)`
-  flex: 1;
-`;
-
-export const StyledLogoText = styled(Text)`
-  font-size: 30px;
-  font-weight: 800;
-  margin-top: 150px;
-  margin-bottom: 30px;
-  text-align: center;
-`;
+export default useStyles;

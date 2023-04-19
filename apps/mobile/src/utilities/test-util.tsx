@@ -1,8 +1,10 @@
 import {FC, ReactElement, ReactNode} from 'react';
 import {render, RenderAPI} from '@testing-library/react-native';
 import {QueryClient, QueryClientProvider} from 'react-query';
+import {ThemeProvider} from '@rneui/themed';
 import {SpinnerProvider} from '../context/spinner/spinnerContext';
 import {GlobalContextProvider} from '../context/global/globalContext';
+import theme from '../styles/theme';
 
 const query = new QueryClient({
   defaultOptions: {
@@ -21,9 +23,11 @@ const customRender = (ui: ReactElement, options?: Omit<RenderAPI, 'wrapper'>) =>
 
 const AllTheProviders: FC<{children: ReactNode}> = ({children}) => (
   <GlobalContextProvider>
-    <QueryClientProvider client={query}>
-      <SpinnerProvider>{children}</SpinnerProvider>
-    </QueryClientProvider>
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={query}>
+        <SpinnerProvider>{children}</SpinnerProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   </GlobalContextProvider>
 );
 

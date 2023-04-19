@@ -1,13 +1,16 @@
-import {TextInput} from 'react-native';
-import styled from 'styled-components/native';
+import {makeStyles} from '@rneui/themed';
 
-export const StyledText = styled(TextInput)`
-  height: 43px;
-  font-size: 14px;
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: #eaeaea;
-  background-color: #fafafa;
-  padding-left: 10px;
-  margin: 5px 0;
-`;
+const useStyles = makeStyles(theme => ({
+  text: {
+    height: 43,
+    fontSize: 14,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: theme.colors.white1,
+    backgroundColor: theme.colors.white0,
+    paddingLeft: 10,
+    marginVertical: 5,
+  },
+}));
+
+export default useStyles;

@@ -2,6 +2,7 @@ import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/asy
 import MockAdapter from 'axios-mock-adapter';
 // import MockAdapterType from 'axios-mock-adapter/types';
 import axiosInstance from './src/network';
+import '@testing-library/jest-native/extend-expect';
 
 const mockKeychain = {
   SECURITY_LEVEL_ANY: 'MOCK_SECURITY_LEVEL_ANY',

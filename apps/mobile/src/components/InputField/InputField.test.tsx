@@ -1,6 +1,5 @@
 import InputField from './InputField';
 import {render, screen} from '../../utilities/test-util';
-import 'jest-styled-components/native';
 
 describe('[Component] - [InputField] ', () => {
   test('should render text input correctly', () => {
@@ -19,9 +18,8 @@ describe('[Component] - [InputField] ', () => {
       />,
     );
 
-    expect(screen.getByTestId('test-input')).toHaveStyleRule(
-      'background-color',
-      '#fafafa',
-    );
+    expect(screen.getByTestId('test-input')).toHaveStyle({
+      backgroundColor: '#FAFAFA',
+    });
   });
 });

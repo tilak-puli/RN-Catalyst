@@ -2,6 +2,8 @@ import '@rneui/themed';
 
 declare module '@rneui/themed' {
   export interface Colors {
-    orange: string;
+    white0: string;
+    white1: string;
+    transparentBlack: string;
   }
 }

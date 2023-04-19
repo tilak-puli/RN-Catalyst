@@ -1,13 +1,10 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {SafeAreaView, Text, View} from 'react-native';
 import Button from '../../components/Button/Button';
 import InputField from '../../components/InputField/InputField';
 import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
-import {
-  Container,
-  StyledLogoText,
-  StyledSafeAreaContainer,
-} from './Login.style';
+import useStyles from './Login.style';
 import {LoginInput} from '../../api/auth';
 
 type LoginProps = {
@@ -23,6 +20,7 @@ const Login = ({
   setLoadingTrue,
   login,
 }: LoginProps) => {
+  const styles = useStyles();
   const {t} = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -42,10 +40,10 @@ const Login = ({
   }, [setLoadingTrue, setLoadingFalse, isLogging]);
 
   return (
-    <StyledSafeAreaContainer>
-      <Container>
+    <SafeAreaView style={styles.safeAreContainer}>
+      <View style={styles.container}>
         <LanguageSelector />
-        <StyledLogoText>Welcome to Catalyst</StyledLogoText>
+        <Text style={styles.logoText}>Welcome to Catalyst</Text>
         <InputField
           placeholder="Username"
           testID="login-username"
@@ -68,8 +66,8 @@ const Login = ({
           testID="login-btn"
           onPress={() => handleLogin()}
         />
-      </Container>
-    </StyledSafeAreaContainer>
+      </View>
+    </SafeAreaView>
   );
 };
 
