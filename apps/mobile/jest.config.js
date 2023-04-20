@@ -11,7 +11,7 @@ module.exports = {
     platforms: ['android', 'ios', 'native'],
   },
   collectCoverage: true,
-  coverageReporters: ['lcov', 'json'],
+  coverageReporters: ['text-summary', 'html'],
   collectCoverageFrom: ['./src/**/*.{ts,tsx}'],
   coverageThreshold: {
     global: {
