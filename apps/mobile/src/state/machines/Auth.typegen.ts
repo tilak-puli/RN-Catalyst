@@ -17,6 +17,7 @@ export interface Typegen0 {
     services: never;
   };
   eventsCausingActions: {
+    removeCreds: 'LOGOUT';
     setCreds: 'LOGIN';
   };
   eventsCausingDelays: {};

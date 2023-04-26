@@ -26,7 +26,10 @@ export const authMachine = createMachine(
       },
     },
     on: {
-      LOGOUT: 'logout',
+      LOGOUT: {
+        target: 'logout',
+        actions: ['removeCreds'],
+      },
     },
     states: {
       idle: {
@@ -73,6 +76,12 @@ export const authMachine = createMachine(
         creds: (_context, event) => ({
           username: event?.data?.username,
           password: event?.data?.password,
+        }),
+      }),
+      removeCreds: assign({
+        creds: () => ({
+          username: '',
+          password: '',
         }),
       }),
     },
