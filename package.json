@@ -1,42 +1,99 @@
 {
   "name": "RN-Catalyst",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:Regional-IT-India/catalyst-ui-reactnative-starter.git",
   "author": "tilak <tilakpur@thoughtworks.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/*"
-    ]
-  },
   "scripts": {
+    "android": "react-native run-android --mode=developmentDebug --appIdSuffix 'dev'",
+    "android:release": "cd android && ./gradlew assembleProductionRelease",
+    "ios": "react-native run-ios --scheme DevCatalystUiReactNativeStarter --configuration Dev.Debug",
+    "mock-server": "yarn workspace mock-server start",
+    "start": "ENVFILE=.env.development react-native start",
+    "test": "jest --colors --config ./jest.config.js",
     "postinstall": "husky install",
-    "lint": "yarn workspaces foreach run lint",
-    "lint:fix": "yarn workspaces foreach run lint:fix",
-    "lint:mobile": "yarn workspace mobile run lint",
-    "type-check": "yarn workspaces foreach run type-check",
-    "prettier:check": "yarn workspaces foreach run prettier:check",
-    "prettier:fix": "yarn workspaces foreach run prettier:fix",
-    "test": "yarn workspaces foreach run test"
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc",
+    "prettier:check": "prettier --check './**/*.{ts,tsx,js,jsx}'",
+    "prettier:fix": "prettier --write './**/*.{ts,tsx,js,jsx}'"
   },
   "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "1.17.6",
+    "@react-native-picker/picker": "2.4.2",
+    "@react-navigation/native": "6.1.6",
+    "@react-navigation/native-stack": "6.9.12",
+    "@rneui/base": "4.0.0-rc.7",
+    "@rneui/themed": "4.0.0-rc.7",
+    "@testing-library/react-hooks": "8.0.1",
+    "@testing-library/react-native": "10.1.1",
+    "@xstate/react": "3.2.1",
+    "axios": "0.27.2",
+    "axios-mock-adapter": "1.21.1",
+    "i18next": "21.8.10",
+    "jotai": "2.0.4",
+    "jotai-xstate": "0.3.0",
+    "react": "18.2.0",
+    "react-i18next": "11.17.2",
+    "react-native": "0.71.6",
+    "react-native-config": "1.4.6",
+    "react-native-flipper": "0.189.0",
+    "react-native-keychain": "8.0.0",
+    "react-native-safe-area-context": "4.5.1",
+    "react-native-screens": "3.15.0",
+    "react-native-splash-screen": "3.3.0",
+    "react-native-vector-icons": "9.2.0",
+    "react-query": "3.39.1",
+    "xstate": "^4.37.1"
+  },
   "devDependencies": {
+    "@babel/core": "7.20.2",
+    "@babel/plugin-transform-react-jsx": "7.18.10",
+    "@babel/preset-env": "7.20.2",
+    "@babel/runtime": "7.20.1",
+    "@testing-library/jest-native": "5.4.2",
+    "@tsconfig/react-native": "^2.0.2",
+    "@types/jest": "28.1.7",
+    "@types/react": "18.0.24",
+    "@types/react-native": "0.67.8",
+    "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "5.33.1",
-    "@typescript-eslint/parser": "5.33.1",
+    "@typescript-eslint/parser": "5.59.1",
     "commitizen": "4.2.4",
     "cz-format-extension": "1.5.0",
     "eslint": "8.22.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "17.0.0",
     "eslint-config-prettier": "8.5.0",
+    "eslint-import-resolver-typescript": "3.4.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.30.0",
+    "eslint-plugin-react-hooks": "4.5.0",
     "eslint-plugin-react-native": "4.0.0",
-    "husky": "8.0.1"
+    "husky": "8.0.1",
+    "jest": "27.5.1",
+    "metro-react-native-babel-preset": "0.70.3",
+    "obfuscator-io-metro-plugin": "2.1.1",
+    "prettier": "2.7.1",
+    "react-native-flipper-xstate": "1.0.5",
+    "react-test-renderer": "18.2.0",
+    "typescript": "4.8.4"
   },
   "config": {
     "commitizen": {
       "path": "cz-format-extension"
     }
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "resolutions": {
     "ejs": "3.1.8",

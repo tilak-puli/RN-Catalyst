@@ -25,7 +25,7 @@ Before your application binary is uploaded to "Google Play/Firebase App Distribu
 - To know why we need signing key, please refer [here](https://stackoverflow.com/questions/23906799/why-should-i-sign-my-apk-before-releasing-to-playstore)
 - Steps to create a signing key and sign an application binary can be found [here](https://reactnative.dev/docs/signed-apk-android)
 - These are the environment variables are required to sign the app. `APP_UPLOAD_KEY_PASSWORD`, `APP_UPLOAD_STORE_PASSWORD`, `APP_UPLOAD_KEY_ALIAS`, `APP_UPLOAD_SIGNING_KEYSTORE`. These are exported in github actions file.
-- Please refer [build.gradle](../../apps/mobile/android/app/build.gradle)'s `signingConfigs` sections.
+- Please refer [build.gradle](android/app/build.gradle)'s `signingConfigs` sections.
 
 #### Steps in release workflow
 
@@ -35,14 +35,14 @@ Before your application binary is uploaded to "Google Play/Firebase App Distribu
 - Cache all the dependencies from ruby, gradle and gradle wrapper. This is useful for faster builds.
 - Setting up the secrets, read more about it in [secrets section](#secretenv-management).
 - Read more about how we implemented version bumping for releases, refer [version bumping](#version-bumping-in-android)
-- Distributing the artifact(.apk) to Firebase app distribution. Please refer [Fastfile](../../apps/mobile/android/fastlane/Fastfile) and [firebase setup](#fastlane-and-firebase-setup)
+- Distributing the artifact(.apk) to Firebase app distribution. Please refer [Fastfile](android/fastlane/Fastfile) and [firebase setup](#fastlane-and-firebase-setup)
 - Finally, upload mappings.txt, sourcemap file and apk to Github actions using upload action for future reference.
 
 ### Fastlane and Firebase setup
 
 - Please refer this article to setup firebase and fastlane: [click here](https://medium.com/firebase-developers/quickly-distribute-app-with-firebase-app-distribution-using-github-actions-fastlane-c7d8eca18ee0)
 - Refer this article to setup firebase and fastlane: [click here](https://medium.com/firebase-developers/quickly-distribute-app-with-firebase-app-distribution-using-github-actions-fastlane-c7d8eca18ee0)
-- Refer [Fastfile](../../apps/mobile/android/fastlane/Fastfile)
+- Refer [Fastfile](android/fastlane/Fastfile)
 - Good Reads:
   - Official docs: https://docs.fastlane.tools/getting-started/cross-platform/react-native/
   - https://dev-yakuza.posstree.com/en/react-native/fastlane/
